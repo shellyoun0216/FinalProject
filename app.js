@@ -35,7 +35,7 @@ app.post('/', function (req, res) {
     var emailAddress = req.body.email;
     var emailMessage = req.body.message;
     if (!emailAddress && !emailMessage) {
-        res.send('No Email and/or Message Supplied');
+        res.sendStatus(500);
     } else {
         var fromEmail = new helper.Email(emailAddress);
         var toEmail = new helper.Email('shellyoun0216@gmail.com');
@@ -50,9 +50,9 @@ app.post('/', function (req, res) {
         });
         sendgrid.API(request, function(error, response) {
             if (error) {
-                res.send('An error occurred');
+                res.sendStatus(500);
             } else {
-                res.send('Email Sent');
+                res.sendStatus(200);
             }
         });
     }
