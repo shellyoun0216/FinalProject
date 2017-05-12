@@ -15,12 +15,9 @@ var allowCrossDomain = function(req, res, next) {
         next();
     }
 };
-
-app.configure(function () {
-    app.use(allowCrossDomain);
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({ extended: false }));
-});
+app.use(allowCrossDomain);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // using SendGrid's v3 Node.js Library
 // https://github.com/sendgrid/sendgrid-nodejs
