@@ -31,6 +31,7 @@ app.get('/', function (req, res) {
 app.post('/', function (req, res) {
     var emailAddress = req.body.email;
     var emailMessage = req.body.message;
+    console.log('Post with the following', emailAddress, emailMessage);
     if (!emailAddress && !emailMessage) {
         res.sendStatus(500);
     } else {
